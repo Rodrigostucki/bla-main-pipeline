@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: 
+    branches:
       - main
   pull_request:
     branches:
@@ -38,12 +38,13 @@ jobs:
         run: npm run build
         working-directory: ./bla-main
 
-      - name: 🔹 Deploy para Vercel
-        if: github.ref == 'refs/heads/main'
-        uses: amondnet/vercel-action@v25
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./bla-main
-          vercel-args: --prod
+      # Deploy desativado - ativar após configurar os secrets do Vercel
+      # - name: 🔹 Deploy para Vercel
+      #   if: github.ref == 'refs/heads/main'
+      #   uses: amondnet/vercel-action@v25
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     working-directory: ./bla-main
+      #     vercel-args: --prod
