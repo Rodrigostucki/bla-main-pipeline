@@ -24,15 +24,19 @@ jobs:
 
       - name: 🔹 Instalar dependências
         run: npm ci
+        working-directory: ./bla-main
 
       - name: 🔹 Rodar ESLint
         run: npm run lint
+        working-directory: ./bla-main
 
       - name: 🔹 Rodar Testes
         run: npm run test --if-present
+        working-directory: ./bla-main
 
       - name: 🔹 Rodar Build
         run: npm run build
+        working-directory: ./bla-main
 
       - name: 🔹 Deploy para Vercel
         uses: amondnet/vercel-action@v25
@@ -40,5 +44,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
+          working-directory: ./bla-main
           prod: true
